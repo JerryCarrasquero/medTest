@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Picker } from "@react-native-picker/picker";
+import { fetchEmergencyKinds } from "./TraumaCardApi";
 
 const options = ["amarillo", "azul"];
 export default function TraumaCard() {
+  fetchEmergencyKinds().then((res) => {
+    setEmergengyOptions(res.emergencyKinds)
+  });
   const [selectedLanguage, setSelectedLanguage] = useState();
+  const [emergencyOptions, setEmergengyOptions] = useState([]);
   return (
     <View style={styles.card}>
       <View style={styles.header}>
@@ -64,7 +69,7 @@ export default function TraumaCard() {
             pickerStyleType="Android"
             dropdownIconColor="#1E40AF"
             onValueChange={(itemValue, itemIndex) =>
-              setSelectedLanguage(itemValue)
+              setSelectedLanguage(itemValue.name)
             }
           >
             <Picker.Item
@@ -72,8 +77,8 @@ export default function TraumaCard() {
               label="Seleccionar"
               enabled={false}
             />
-            {options.map((j) => (
-              <Picker.Item label={j} value={j} />
+            {emergencyOptions.map((j) => (
+              <Picker.Item label={j.name} value={j} />
             ))}
           </Picker>
         </View>
