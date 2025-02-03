@@ -1,35 +1,14 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 
 export default function TraumaCard() {
   return (
-    <View
-      style={{
-        maxWidth: 400,
-        backgroundColor: "white",
-        borderRadius: 20,
-        shadowColor: "#000",
-        shadowOpacity: 0.1,
-        shadowRadius: 10,
-        borderWidth: 1,
-        borderColor: "#ccc",
-      }}
-    >
-      <View
-        style={{
-          backgroundColor: "#1E40AF",
-          padding: 16,
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20,
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+    <View style={styles.card}>
+      <View style={styles.header}>
         <View>
-          <Text style={{ color: "white", fontSize: 18, fontWeight: "bold" }}>
+          <Text style={styles.title}>
             Traumatología
           </Text>
-          <Text style={{ color: "white", fontSize: 14 }}>
+          <Text style={styles.subtitle}>
             Dr. José Pedro Sans
           </Text>
         </View>
@@ -44,7 +23,7 @@ export default function TraumaCard() {
           }}
         >
           <Image source={require("./icons/face_24px.png")} />
-          <View style={{marginLeft:4}}>
+          <View style={{ marginLeft: 4 }}>
             <Text style={{ fontSize: 18, fontWeight: "bold" }}>
               Jorge Avendaño Pérez
             </Text>
@@ -52,47 +31,47 @@ export default function TraumaCard() {
           </View>
         </View>
         <Text>
-          <Text style={{ fontWeight: "bold", color: "#1E40AF" }}>
+          <Text style={styles.label}>
             Ficha médica:
-          </Text>{" "}
+          </Text>
           77884
         </Text>
         <Text>
-          <Text style={{ fontWeight: "bold", color: "#1E40AF" }}>
+          <Text style={styles.label}>
             Diagnóstico:
-          </Text>{" "}
+          </Text>
           Calcificación Talón
         </Text>
         <Text>
-          <Text style={{ fontWeight: "bold", color: "#1E40AF" }}>
+          <Text style={styles.label}>
             Intervención:
-          </Text>{" "}
+          </Text>
           Extirpación en talón
         </Text>
         <Text>
-          <Text style={{ fontWeight: "bold", color: "#1E40AF" }}>
+          <Text style={styles.label}>
             Evaluación preanestésica:
-          </Text>{" "}
+          </Text>
           Sí
         </Text>
         <Text>
-          <Text style={{ fontWeight: "bold", color: "#1E40AF" }}>
+          <Text style={styles.label}>
             Tiempo de solicitud:
-          </Text>{" "}
+          </Text>
           3 días
         </Text>
         <Text>
-          <Text style={{ fontWeight: "bold", color: "#1E40AF" }}>
+          <Text style={styles.label}>
             Suspensiones:
-          </Text>{" "}
+          </Text>
           2
         </Text>
-        <View style={{ flexDirection: "row", marginTop: 16 }}>
+        <View style={styles.iconRow}>
           <Image source={require("./icons/Icon_Cardio.png")} />
           <Image source={require("./icons/Icon_Anestesia.png")} />
         </View>
         <View style={{ marginTop: 16 }}>
-          <Text style={{ fontWeight: "bold", color: "#1E40AF" }}>
+          <Text style={styles.label}>
             Tipo de Urgencia
           </Text>
         </View>
@@ -100,3 +79,42 @@ export default function TraumaCard() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  card: {
+    maxWidth: 400,
+    backgroundColor: "white",
+    borderRadius: 20,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    borderWidth: 1,
+    borderColor: "#ccc",
+  },
+  header: {
+    backgroundColor: "#1E40AF",
+    padding: 16,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  title: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  subtitle: {
+    color: "white",
+    fontSize: 14,
+  },
+  label: {
+    fontWeight: "bold",
+    color: "#1E40AF",
+  },
+  iconRow: {
+    flexDirection: "row",
+    marginTop: 16,
+  }
+});
